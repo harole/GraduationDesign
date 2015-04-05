@@ -1,0 +1,88 @@
+<section data-ng-controller="LabsController">
+  <div class="page-header">
+    <h1>Booking</h1>
+  </div>
+  <button data-ng-click="find()">列表</button>
+  <div class="col-md-12">
+    <form name="articleForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+      <fieldset>
+        <div class="form-group" ng-class="{ 'has-error': articleForm.title.$dirty && articleForm.title.$invalid }">
+          <label class="control-label" for="title"></label>
+          <div class="controls">
+            <!-- <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required> -->
+            <select name="" id="">
+              <option value="">科研楼1</option>
+              <option value="">科研楼2</option>
+              <option value="">科研楼3</option>
+              <option value="">科研楼4</option>
+              <option value="">科研楼5</option>
+            </select>
+            <select name="" id="">
+              <option value="">1层</option>
+              <option value="">2层</option>
+              <option value="">3层</option>
+              <option value="">4层</option>
+              <option value="">5层</option>
+            </select>
+            <select name="" id="">
+              <option value="">101</option>
+              <option value="">102</option>
+              <option value="">103</option>
+              <option value="">104</option>
+              <option value="">105</option>
+            </select>
+          </div>
+        </div>
+        <!-- <div class="form-group" ng-class="{ 'has-error': articleForm.title.$dirty && articleForm.title.$invalid }">
+          <label class="control-label" for="title">Title</label>
+          <div class="controls">
+            <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="content">Content</label>
+          <div class="controls">
+            <textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-default">
+        </div>
+        <div data-ng-show="error" class="text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div> -->
+      </fieldset>
+    </form>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <th>序号</th>
+        <th>楼栋</th>
+        <th>层</th>
+        <th>实验室名称</th>
+        <th>操作</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="lab in labs">
+          <td><span ng-bind="$index"></span></td>
+          <td>
+            <span ng-bind="lab.department"></span>
+          </td>
+          <td>
+            <span ng-bind="lab.floor"></span>
+          </td>
+          <td>
+            <span ng-bind="lab.lab_name"></span>
+          </td>
+          <td>
+            <button class="btn btn-primary"
+              ng-show="lab.status === 0">订阅</button>
+            <button class="btn" disabled
+              ng-show="lab.status === 1">已订阅</button>
+            <button class="btn" disabled
+              ng-show="lab.status === 2">布置中</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

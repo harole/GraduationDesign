@@ -10,20 +10,25 @@ var mongoose = require('mongoose'),
  * Article Schema
  */
 var ArticleSchema = new Schema({
-  created: {
-    type: Date,
-    default: Date.now
-  },
-  title: {
+  department: {
     type: String,
     default: '',
     trim: true,
-    required: 'Title cannot be blank'
+    required: 'Department cannot be blank'
   },
-  content: {
+  floor: {
+    type: Number,
+    required: 'Floor cannot be blank'
+  },
+  lab_name: {
     type: String,
     default: '',
-    trim: true
+    trim: true,
+    required: 'Floor cannot be blank'
+  },
+  status: {
+    type: Number,
+    default: 0,
   },
   user: {
     type: Schema.ObjectId,
@@ -31,4 +36,4 @@ var ArticleSchema = new Schema({
   }
 });
 
-mongoose.model('Article', ArticleSchema);
+mongoose.model('Lab', ArticleSchema);
