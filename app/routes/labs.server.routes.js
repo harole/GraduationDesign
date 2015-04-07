@@ -10,4 +10,15 @@ module.exports = function(app) {
   app.route('/labs')
     .get(labs.list);
 
+  app.route('/labs/private')
+    .get(labs.privateList);
+
+  app.route('/labs/private/:labId')
+    .put(users.requiresLogin, labs.hasAuthorization, labs.update);
+
+  app.route('/labs/:labId')
+    .get(labs.read)
+    .put(users.requiresLogin, labs.update);
+
+  app.param('labId', labs.labByID);
 };

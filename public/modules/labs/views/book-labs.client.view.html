@@ -1,37 +1,55 @@
-<section data-ng-controller="LabsController">
+<section data-ng-controller="LabsController" class="bookingPage">
   <div class="page-header">
     <h1>Booking</h1>
   </div>
-  <button data-ng-click="find()">列表</button>
   <div class="col-md-12">
-    <form name="articleForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+    <form name="articleForm" class="form-inline bookingSearch" data-ng-submit="create()" novalidate>
       <fieldset>
-        <div class="form-group" ng-class="{ 'has-error': articleForm.title.$dirty && articleForm.title.$invalid }">
-          <label class="control-label" for="title"></label>
+        <div class="form-group">
           <div class="controls">
-            <!-- <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required> -->
-            <select name="" id="">
-              <option value="">科研楼1</option>
-              <option value="">科研楼2</option>
-              <option value="">科研楼3</option>
-              <option value="">科研楼4</option>
-              <option value="">科研楼5</option>
-            </select>
-            <select name="" id="">
-              <option value="">1层</option>
-              <option value="">2层</option>
-              <option value="">3层</option>
-              <option value="">4层</option>
-              <option value="">5层</option>
-            </select>
-            <select name="" id="">
-              <option value="">101</option>
-              <option value="">102</option>
-              <option value="">103</option>
-              <option value="">104</option>
-              <option value="">105</option>
-            </select>
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <span ng-bind="department?department:'All Department'"></span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                  <a role="menuitem" tabindex="-1" href="" ng-click="changeDepartment()">All Department</a>
+                </li>
+                <li role="presentation" ng-repeat="department in departments track by $index">
+                  <a role="menuitem" tabindex="-1" href=""
+                    ng-bind="department"
+                    ng-click="changeDepartment($index)"></a>
+                </li>
+              </ul>
+            </div>
           </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <div class="dropdown">
+              <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <span ng-bind="floor?floor + ' Floor': 'All Floor' "></span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                  <a role="menuitem" tabindex="-1" href="" ng-click="changeFloor()">All Floor</a>
+                </li>
+                <li role="presentation" ng-repeat="floor in floors track by $index">
+                  <a role="menuitem" tabindex="-1" href=""
+                    ng-bind="floor + ' Floor' "
+                    ng-click="changeFloor($index)"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input name="lab_name" type="text" data-ng-model="lab_name" id="title" class="form-control" placeholder="lab_name" required>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-default" data-ng-click="find()">Search</button>
         </div>
         <!-- <div class="form-group" ng-class="{ 'has-error': articleForm.title.$dirty && articleForm.title.$invalid }">
           <label class="control-label" for="title">Title</label>
@@ -75,11 +93,12 @@
           </td>
           <td>
             <button class="btn btn-primary"
-              ng-show="lab.status === 0">订阅</button>
+              ng-hide="lab.owner.id"
+              ng-click="bookingLab($index)">预订</button>
             <button class="btn" disabled
-              ng-show="lab.status === 1">已订阅</button>
-            <button class="btn" disabled
-              ng-show="lab.status === 2">布置中</button>
+              ng-show="lab.owner.id">已预订</button>
+            <!-- <button class="btn" disabled
+              ng-bind="authentication.user._id"></button> -->
           </td>
         </tr>
       </tbody>

@@ -1,0 +1,39 @@
+<section ng-controller="PrivateLabController" class="privateLabsPage">
+  <div class="page-header">
+    <h1>My Labs</h1>
+  </div>
+  <div class="col-md-12">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <th>序号</th>
+        <th>楼栋</th>
+        <th>层</th>
+        <th>实验室名称</th>
+        <th>操作</th>
+        <th>user</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="lab in labs">
+          <td><span ng-bind="$index"></span></td>
+          <td>
+            <span ng-bind="lab.department"></span>
+          </td>
+          <td>
+            <span ng-bind="lab.floor"></span>
+          </td>
+          <td>
+            <span ng-bind="lab.lab_name"></span>
+          </td>
+          <td>
+            <button class="btn btn-primary"
+              ng-show="lab.owner.id"
+              ng-click="cancelLab($index)">退订</button>
+            <button class="btn" disabled
+              ng-hide="lab.owner.id">已退订</button>
+          </td>
+          <td ng-bind="lab.owner.id"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -7,9 +7,9 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 /**
- * Article Schema
+ * Lab Schema
  */
-var ArticleSchema = new Schema({
+var LabSchema = new Schema({
   department: {
     type: String,
     default: '',
@@ -26,14 +26,12 @@ var ArticleSchema = new Schema({
     trim: true,
     required: 'Floor cannot be blank'
   },
-  status: {
-    type: Number,
-    default: 0,
-  },
-  user: {
-    type: Schema.ObjectId,
-    ref: 'User'
+  owner: {
+    id: {
+      type: String,
+      default: ''
+    }
   }
 });
 
-mongoose.model('Lab', ArticleSchema);
+mongoose.model('Lab', LabSchema);
