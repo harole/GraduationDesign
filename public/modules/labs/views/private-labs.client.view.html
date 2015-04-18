@@ -5,35 +5,41 @@
   <div class="col-md-12">
     <table class="table table-bordered table-striped table-hover">
       <thead>
-        <th>序号</th>
-        <th>楼栋</th>
-        <th>层</th>
-        <th>实验室名称</th>
-        <th>操作</th>
-        <th>user</th>
+        <th>Num</th>
+        <th>Department</th>
+        <th>Floor</th>
+        <th>Lab Name</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Operation</th>
+        <!-- <th>user</th> -->
       </thead>
       <tbody>
-        <tr ng-repeat="lab in labs">
+        <tr ng-repeat="labInfo in labsInfo">
           <td><span ng-bind="$index"></span></td>
           <td>
-            <span ng-bind="lab.department"></span>
+            <span ng-bind="labInfo.lab.department"></span>
           </td>
           <td>
-            <span ng-bind="lab.floor"></span>
+            <span ng-bind="labInfo.lab.floor"></span>
           </td>
           <td>
-            <span ng-bind="lab.lab_name"></span>
+            <span ng-bind="labInfo.lab.lab_name"></span>
+          </td>
+          <td><span ng-bind="labInfo.start_time | date: 'yyyy-MM-dd'"></span></td>
+          <td>
+            <span ng-bind="labInfo.start_time | date: 'HH:mm'"></span>
+            ~
+            <span ng-bind="labInfo.end_time | date: 'HH:mm'"></span>
           </td>
           <td>
-            <button class="btn btn-primary"
-              ng-show="lab.owner.id"
-              ng-click="cancelLab($index)">退订</button>
-            <button class="btn" disabled
-              ng-hide="lab.owner.id">已退订</button>
+            <button class="btn btn-danger"
+              ng-click="remove($index)">Remove</button>
           </td>
-          <td ng-bind="lab.owner.id"></td>
+          <!-- <td ng-bind="labInfo.user"></td> -->
         </tr>
       </tbody>
     </table>
+    <div class="noDataHelp" ng-show="labs.length === 0">No Data!</div>
   </div>
 </section>

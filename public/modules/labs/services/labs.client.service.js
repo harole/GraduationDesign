@@ -13,10 +13,21 @@ angular.module('labs')
     });
   }
 ])
+.factory('LabsInfo', ['$resource',
+  function($resource) {
+    return $resource('labs/info/:labInfoId', {
+      labInfoId: '@_id'
+    }, {
+      update: {
+        method: 'PUT'
+      }
+    });
+  }
+])
 .factory('PrivateLabs', ['$resource',
   function($resource){
-    return $resource('labs/private/:labId', {
-      labId: '@_id'
+    return $resource('labs/info', {
+      private: 1
     }, {
       update: {
         method: 'PUT'

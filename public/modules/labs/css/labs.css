@@ -1,3 +1,6 @@
 .bookingPage .bookingSearch {
   margin-bottom: 20px;
 }
+.noDataHelp {
+  text-align: center;
+}

@@ -6,11 +6,11 @@ angular.module('labs').config(['$stateProvider',
     // Articles state routing
     $stateProvider
     .state('bookLabs', {
-        url: '/labs/booking',
-        templateUrl: 'modules/labs/views/book-labs.client.view.html'
+        url: '/labs',
+        templateUrl: 'modules/labs/views/labs.client.view.html'
     })
     .state('privateLab', {
-        url: '/labs/private',
+        url: '/labs/info?private=1',
         templateUrl: 'modules/labs/views/private-labs.client.view.html'
     });
     // state('listArticles', {

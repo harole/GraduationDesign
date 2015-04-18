@@ -1,0 +1,155 @@
+<section data-ng-controller="LabsController" class="bookingPage">
+  <div class="page-header">
+    <h1>Lab List</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="articleForm" class="form-inline bookingSearch clearfix" data-ng-submit="create()" novalidate>
+      <fieldset class="pull-right">
+        <!-- <div class="form-group">
+          <div class="controls">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox"
+                  ng-checked="onlyEnabledLab"
+                  ng-click="onlyEnabledLab = !onlyEnabledLab"> 仅显示可预订
+              </label>
+            </div>
+          </div>
+        </div> -->
+        <div class="form-group">
+          <div class="controls">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <span ng-bind="department?department:'All Department'"></span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                  <a role="menuitem" tabindex="-1" href="" ng-click="changeDepartment()">All Department</a>
+                </li>
+                <li role="presentation" ng-repeat="department in departments track by $index">
+                  <a role="menuitem" tabindex="-1" href=""
+                    ng-bind="department"
+                    ng-click="changeDepartment($index)"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="controls">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <span ng-bind="floor?floor + ' Floor': 'All Floor' "></span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation">
+                  <a role="menuitem" tabindex="-1" href="" ng-click="changeFloor()">All Floor</a>
+                </li>
+                <li role="presentation" ng-repeat="floor in floors track by $index">
+                  <a role="menuitem" tabindex="-1" href=""
+                    ng-bind="floor + ' Floor' "
+                    ng-click="changeFloor($index)"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input name="lab_name" type="text" data-ng-model="lab_name" id="title" class="form-control" placeholder="lab_name" required>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" ng-click="submit()">Search</button>
+        </div>
+        <!-- <div class="form-group" ng-class="{ 'has-error': articleForm.title.$dirty && articleForm.title.$invalid }">
+          <label class="control-label" for="title">Title</label>
+          <div class="controls">
+            <input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="content">Content</label>
+          <div class="controls">
+            <textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-default">
+        </div>
+        <div data-ng-show="error" class="text-danger">
+          <strong data-ng-bind="error"></strong>
+        </div> -->
+      </fieldset>
+    </form>
+    <table class="table table-bordered table-striped table-hover row">
+      <thead>
+        <th class="col-md-1">Num</th>
+        <th class="col-md-2">Department</th>
+        <th class="col-md-1">Floor</th>
+        <th class="col-md-2">Lab Name</th>
+        <th class="col-md-1">Capacity</th>
+        <th class="col-md-2">Date</th>
+        <th class="col-md-1">Time</th>
+        <th class="col-md-2">Operation</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="lab in labs">
+          <td class="vert-center"><span ng-bind="$index"></span></td>
+          <td class="vert-center">
+            <span ng-bind="lab.department"></span>
+          </td>
+          <td class="vert-center">
+            <span ng-bind="lab.floor"></span>
+          </td>
+          <td class="vert-center">
+            <span ng-bind="lab.lab_name"></span>
+          </td>
+          <td class="vert-center">
+            <span ng-bind="lab.person_num"></span>
+          </td>
+          <td class="vert-center">
+            <div class="input-group">
+              <input type="text" class="form-control" datepicker-popup="yyyy-MM-dd" ng-model="lab.dt" is-open="lab.opened" min-date="minDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" show-button-bar="false" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event, $index)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </td>
+          <td class="vert-center">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                <span ng-bind="lab.selectedPeriod.startTime"></span>
+                ~
+                <span ng-bind="lab.selectedPeriod.endTime"></span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation" ng-repeat="period in lab.periods track by $index">
+                  <a role="menuitem" tabindex="-1" href=""
+                    ng-click="selectPeriod($parent.$index, $index)">
+                    <span ng-bind="period.startTime"></span>
+                    ~
+                    <span ng-bind="period.endTime"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </td>
+          <td class="vert-center">
+              <button class="btn btn-primary pull-left"
+                ng-click="bookingLab($index)">Reserve</button>
+              <!-- <button class="btn" disabled</div>
+              ng-bind="authentication.user._id"></button> -->
+              <!-- <button class="btn btn-primary"
+                ng-hide="lab.owner.id"
+                ng-click="bookingLab($index)">预订</button>
+              <button class="btn" disabled
+                ng-show="lab.owner.id">已预订</button> -->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="noDataHelp" ng-show="labs.length === 0">No Data!</div>
+  </div>
+</section>

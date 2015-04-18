@@ -26,11 +26,9 @@ var LabSchema = new Schema({
     trim: true,
     required: 'Floor cannot be blank'
   },
-  owner: {
-    id: {
-      type: String,
-      default: ''
-    }
+  person_num: {
+    type: Number,
+    default: ''
   }
 });
 

@@ -1,20 +1,640 @@
 .content {
-	margin-top: 50px;
+  margin-top: 50px;
 }
 .undecorated-link:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-	display: none !important;
+  display: none !important;
 }
 .ng-invalid.ng-dirty {
-	border-color: #FA787E;
+  border-color: #FA787E;
 }
 .ng-valid.ng-dirty {
-	border-color: #78FA89;
+  border-color: #78FA89;
 }
 .browsehappy.jumbotron.hide,
 body.ng-cloak
 {
-	display: block;
+  display: block;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-mini {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-mini {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.margin-mini {
+  margin: 3px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-mini-left {
+  margin-left: 3px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-mini-right {
+  margin-right: 3px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-mini-top {
+  margin-top: 3px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-mini-bottom {
+  margin-bottom: 3px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-mini {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-mini {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.padding-mini {
+  padding: 3px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-mini-left {
+  padding-left: 3px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-mini-right {
+  padding-right: 3px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-mini-top {
+  padding-top: 3px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-mini-bottom {
+  padding-bottom: 3px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-small {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-small {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.margin-small {
+  margin: 6px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-small-left {
+  margin-left: 6px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-small-right {
+  margin-right: 6px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-small-top {
+  margin-top: 6px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-small-bottom {
+  margin-bottom: 6px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-small {
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-small {
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.padding-small {
+  padding: 6px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-small-left {
+  padding-left: 6px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-small-right {
+  padding-right: 6px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-small-top {
+  padding-top: 6px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-small-bottom {
+  padding-bottom: 6px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-medium {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-medium, .table .caption, #alert-container .title {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.margin-medium {
+  margin: 10px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-medium-left {
+  margin-left: 10px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-medium-right {
+  margin-right: 10px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-medium-top {
+  margin-top: 10px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-medium-bottom {
+  margin-bottom: 10px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-medium {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-medium, #struct-store-table-create .title, #struct-store-table-struct-setting .title {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.padding-medium {
+  padding: 10px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-medium-left {
+  padding-left: 10px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-medium-right {
+  padding-right: 10px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-medium-top {
+  padding-top: 10px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-medium-bottom {
+  padding-bottom: 10px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-medium2 {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-medium2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.margin-medium2 {
+  margin: 20px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-medium2-left {
+  margin-left: 20px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-medium2-right {
+  margin-right: 20px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-medium2-top {
+  margin-top: 20px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-medium2-bottom {
+  margin-bottom: 20px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-medium2, #struct-store-data .table .hori-padding-medium2 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-medium2 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.padding-medium2 {
+  padding: 20px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-medium2-left {
+  padding-left: 20px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-medium2-right {
+  padding-right: 20px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-medium2-top {
+  padding-top: 20px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-medium2-bottom {
+  padding-bottom: 20px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-large {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-large, #struct-store-monitor .vert-margin-large {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.margin-large {
+  margin: 30px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-large-left {
+  margin-left: 30px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-large-right {
+  margin-right: 30px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-large-top {
+  margin-top: 30px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-large-bottom {
+  margin-bottom: 30px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-large {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-large {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.padding-large {
+  padding: 30px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-large-left {
+  padding-left: 30px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-large-right {
+  padding-right: 30px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-large-top {
+  padding-top: 30px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-large-bottom {
+  padding-bottom: 30px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-xlarge {
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-xlarge {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.margin-xlarge {
+  margin: 60px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-xlarge-left {
+  margin-left: 60px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-xlarge-right {
+  margin-right: 60px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-xlarge-top {
+  margin-top: 60px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-xlarge-bottom {
+  margin-bottom: 60px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-xlarge {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-xlarge {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.padding-xlarge {
+  padding: 60px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-xlarge-left {
+  padding-left: 60px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-xlarge-right {
+  padding-right: 60px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-xlarge-top {
+  padding-top: 60px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-xlarge-bottom {
+  padding-bottom: 60px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-2xlarge {
+  margin-left: 90px;
+  margin-right: 90px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-2xlarge {
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.margin-2xlarge {
+  margin: 90px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-2xlarge-left {
+  margin-left: 90px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-2xlarge-right {
+  margin-right: 90px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-2xlarge-top {
+  margin-top: 90px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-2xlarge-bottom {
+  margin-bottom: 90px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-2xlarge {
+  padding-left: 90px;
+  padding-right: 90px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-2xlarge {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.padding-2xlarge {
+  padding: 90px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-2xlarge-left {
+  padding-left: 90px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-2xlarge-right {
+  padding-right: 90px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-2xlarge-top {
+  padding-top: 90px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-2xlarge-bottom {
+  padding-bottom: 90px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-3xlarge {
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-3xlarge {
+  margin-top: 120px;
+  margin-bottom: 120px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.margin-3xlarge {
+  margin: 120px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-3xlarge-left {
+  margin-left: 120px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-margin-3xlarge-right {
+  margin-right: 120px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-3xlarge-top {
+  margin-top: 120px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-margin-3xlarge-bottom {
+  margin-bottom: 120px;
+}
+
+/* line 11, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-3xlarge {
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+/* line 15, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-3xlarge {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+/* line 19, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.padding-3xlarge {
+  padding: 120px;
+}
+
+/* line 22, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-3xlarge-left {
+  padding-left: 120px;
+}
+
+/* line 25, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.hori-padding-3xlarge-right {
+  padding-right: 120px;
+}
+
+/* line 28, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-3xlarge-top {
+  padding-top: 120px;
+}
+
+/* line 31, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.vert-padding-3xlarge-bottom {
+  padding-bottom: 120px;
+}
+
+/* line 122, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.table .abs-center,
+.box-table .abs-center, .table .hori-center,
+.box-table .hori-center {
+  text-align: center;
+}
+
+/* line 125, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.table .abs-center,
+.box-table .abs-center, .table .vert-center,
+.box-table .vert-center {
+  vertical-align: middle;
+}
+/* line 129, F:/workspace/xiaomi/dev-platform-console-fe/app/struct-store/_utilities.scss */
+.table .abs-center input[type="text"],
+.box-table .abs-center input[type="text"], .table .vert-center input[type="text"],
+.box-table .vert-center input[type="text"],
+.table .abs-center input[type="checkbox"],
+.box-table .abs-center input[type="checkbox"],
+.table .vert-center input[type="checkbox"],
+.box-table .vert-center input[type="checkbox"],
+.table .abs-center select,
+.box-table .abs-center select,
+.table .vert-center select,
+.box-table .vert-center select {
+  margin: 0;
 }

@@ -9,7 +9,9 @@ var mongoose = require('mongoose'),
   _ = require('lodash');
 
 exports.list = function(req, res){
-  Lab.find().sort({'department': 1, 'floor': 1}).exec(function(err, labs){
+  var queryParams = req.query;
+
+  Lab.find(queryParams).sort({'department': 1, 'floor': 1}).exec(function(err, labs){
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -48,6 +50,7 @@ exports.hasAuthorization = function(req, res, next){
 };
 
 exports.labByID = function(req, res, next, id){
+  console.log(id);
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({
       message: 'Lab is invalid'

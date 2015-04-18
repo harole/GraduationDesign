@@ -54,14 +54,14 @@
         </ul>
       </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
       <li ui-route="/lab/center" ng-class="{active: $uiRoute}">
-        <a href="/#!/labs/booking">Booking</a>
+        <a href="/#!/labs">Lab List</a>
       </li>
     </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li ui-route="/labs/private" ng-class="{active: $uiRoute}">
-        <a href="/#!/labs/private">My Labs</a>
+    <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+      <li ui-route="/labs/info?private=1" ng-class="{active: $uiRoute}">
+        <a href="/#!/labs/info?private=1">My Labs</a>
       </li>
     </ul>
   </nav>
