@@ -10,7 +10,7 @@ var users = require('../../app/controllers/users.server.controller'),
 module.exports = function(app) {
 
   app.route('/labs/info')
-    .post(labsInfo.create)
+    .post(users.requiresLogin, labsInfo.hadExistLabInfo, labsInfo.create)
     .get(labsInfo.list);
     // .put(users.requiresLogin, labsInfo.update);
 

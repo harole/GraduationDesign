@@ -2,19 +2,16 @@
 
 // Articles controller
 angular.module('labs')
-.controller('LabsController', ['$scope', '$stateParams', '$location', 'Labs', 'Authentication', 'LabsInfo',
-  function($scope, $stateParams, $location, Labs, Authentication, LabsInfo) {
-    // var labsResource;
+.controller('LabsController', ['$scope', '$stateParams', '$location', 'Labs', 'Authentication', 'LabsInfo', '$timeout',
+  function($scope, $stateParams, $location, Labs, Authentication, LabsInfo, $timeout) {
+    var timer = 2500;
 
     $scope.authentication = Authentication;
-    $scope.onlyEnabledLab = false;
+    // $scope.onlyEnabledLab = false;
 
     $scope.department = null;
     $scope.floor = null;
     $scope.lab_name = null;
-    $scope.owner = {
-      id: null
-    };
 
     $scope.departments = [];
     $scope.floors = [];
@@ -35,6 +32,8 @@ angular.module('labs')
           }
           lab.dt = new Date();
           lab.opened = false;
+          lab.reserveInterval = 0;
+          lab.reserveTimes = 1;
           lab.periods = [{
             startTime: '8:30',
             endTime: '10:05'
@@ -63,11 +62,11 @@ angular.module('labs')
     // 初始化实验室列表
     queryLabs();
 
-    $scope.$watch('onlyEnabledLab', function(newVal, oldVal){
-      if(newVal !== oldVal){
-        $scope.submit();
-      }
-    });
+    // $scope.$watch('onlyEnabledLab', function(newVal, oldVal){
+    //   if(newVal !== oldVal){
+    //     $scope.submit();
+    //   }
+    // });
     $scope.$watch('department', function(newVal, oldVal){
       if(newVal !== oldVal){
         $scope.submit();
@@ -78,6 +77,14 @@ angular.module('labs')
         $scope.submit();
       }
     });
+    $scope.$watch('error', function(newVal, oldVal){
+      if(newVal !== oldVal && newVal){
+        $timeout(function(){
+          $scope.error = false;
+        }, timer);
+      }
+    });
+
     $scope.changeDepartment = function(index){
       if(Object.prototype.toString.call(index) === '[object Number]'){
         $scope.department = $scope.departments[index];
@@ -94,29 +101,37 @@ angular.module('labs')
         $scope.floor = null;
       }
     };
+
     $scope.bookingLab = function(index){
       var lab = $scope.labs[index],
         year = lab.dt.getFullYear(),
         month = lab.dt.getMonth()+ 1,
         day = lab.dt.getDate(),
-        date = year + '-' + month + '-' + day;
+        date = year + '-' + month + '-' + day,
+        labsInfo = [];
 
-      var startTime =  date + ' ' + lab.selectedPeriod.startTime;
-      var endTime = date + ' ' + lab.selectedPeriod.endTime;
+      var startTime =  new Date(date + ' ' + lab.selectedPeriod.startTime).getTime();
+      var endTime = new Date(date + ' ' + lab.selectedPeriod.endTime).getTime();
+      console.log(lab.reserveInterval);
+      console.log(lab.reserveTimes);
+      if(lab.reserveTimes && lab.reserveInterval){
+        var intervalMillisecond = lab.reserveInterval*24*60*60*1000;
 
-      var labInfo = new LabsInfo({
-        start_time: new Date(startTime),
-        end_time: new Date(endTime),
-        lab: lab._id,
-        user: $scope.authentication.user._id
-      });
+        for(var i = 0; i < lab.reserveTimes; i++){
+          var labInfo = new LabsInfo({
+            start_time: new Date(startTime),
+            end_time: new Date(endTime),
+            lab: lab._id,
+            user: $scope.authentication.user._id
+          });
+          labInfo.$save();
 
-      // lab.owner.id = $scope.authentication.user._id;
-      labInfo.$save(function(response){
+          startTime = startTime + intervalMillisecond;
+          endTime = endTime + intervalMillisecond;
+        }
 
-      }, function(errorResponse){
-        $scope.error = errorResponse.data.message;
-      });
+      }
+
     };
     $scope.submit = function(){
       var queryParams ={};
@@ -172,7 +187,5 @@ angular.module('labs')
       console.log(labInfo);
       labInfo.$remove();
     };
-
-
   }
 ]);

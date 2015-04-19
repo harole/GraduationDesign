@@ -12,7 +12,9 @@ var mongoose = require('mongoose'),
 exports.create = function(req, res){
   var labInfo = new LabsInfo(req.body);
 
-  // labInfo.user = req.user.id;
+  // labInfo.findOne({lab: labInfo.lab}).exec(function(err, labInfo){
+
+  // });
   labInfo.save(function(err){
     if(err){
       return res.status(400).send({
@@ -98,6 +100,17 @@ exports.update = function(req, res){
     } else {
       res.json(lab);
     }
+  });
+};
+exports.hadExistLabInfo = function(req, res, next){
+  LabsInfo.findOne({lab: req.body.lab, start_time: req.body.start_time}).exec(function(err, labInfo){
+    console.log(labInfo);
+    if(labInfo){
+      return res.status(403).send({
+        message: 'Lab had been reserved'
+      });
+    }
+    next();
   });
 };
 
