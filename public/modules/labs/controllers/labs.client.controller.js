@@ -4,11 +4,26 @@
 angular.module('labs')
 .controller('LabsController', ['$scope', '$stateParams', '$location', 'Labs', 'Authentication', 'LabsInfo', '$timeout',
   function($scope, $stateParams, $location, Labs, Authentication, LabsInfo, $timeout) {
-    var timer = 2500;
+    var timer = 2500,
+      Periods = [{
+        startTime: '8:30',
+        endTime: '10:05'
+      }, {
+        startTime: '10:20',
+        endTime: '11:55'
+      }, {
+        startTime: '14:30',
+        endTime: '16:05'
+      }, {
+        startTime: '16:20',
+        endTime: '17:55'
+      }, {
+        startTime: '19:30',
+        endTime: '21:55'
+      }];
 
     $scope.authentication = Authentication;
     // $scope.onlyEnabledLab = false;
-
     $scope.department = null;
     $scope.floor = null;
     $scope.lab_name = null;
@@ -16,46 +31,89 @@ angular.module('labs')
     $scope.departments = [];
     $scope.floors = [];
 
+    // 修改日期时，改变可预订的时间段
+    $scope.changedDate = function(index){
+      var lab = $scope.labs[index],
+        periods = Periods.slice(),
+        year = lab.dt.getFullYear(),
+        month = lab.dt.getMonth()+ 1,
+        day = lab.dt.getDate(),
+        date = year + '-' + month + '-' + day;
+      $scope.labsInfo.forEach(function(labInfo, i){
+        if(labInfo.lab._id === lab._id){
+          periods = periods.filter(function(period){
+            if(new Date(labInfo.start_time).getTime() === new Date(date+' '+period.startTime).getTime()){
+              return false;
+            }
+            return true;
+          });
+        }
+      });
+      lab.periods = periods;
+      lab.selectedPeriod = lab.periods[0];
+    };
+    // 查找labs
     function queryLabs(params){
       Labs.query(params).$promise.then(function(labs){
         var departmentObj = {},
           floorObj = {};
 
-        $scope.labs = labs.slice(0,5);
+        $scope.labs = labs;
+        LabsInfo.query().$promise.then(function(labsInfo){
+          $scope.labsInfo = labsInfo;
 
-        $scope.labs.forEach(function(lab, i){
-          if(!departmentObj[lab.department]){
-            departmentObj[lab.department] = true;
-          }
-          if(!floorObj[lab.floor]){
-            floorObj[lab.floor] = true;
-          }
-          lab.dt = new Date();
-          lab.opened = false;
-          lab.reserveInterval = 0;
-          lab.reserveTimes = 1;
-          lab.periods = [{
-            startTime: '8:30',
-            endTime: '10:05'
-          }, {
-            startTime: '10:20',
-            endTime: '11:55'
-          }, {
-            startTime: '14:30',
-            endTime: '16:05'
-          }, {
-            startTime: '16:20',
-            endTime: '17:55'
-          }, {
-            startTime: '19:30',
-            endTime: '21:55'
-          }];
-          lab.selectedPeriod = lab.periods[0];
+          // 添加时间段
+          $scope.labs.forEach(function(lab, i){
+            var periods = Periods.slice();
+
+            if(!departmentObj[lab.department]){
+              departmentObj[lab.department] = true;
+            }
+            if(!floorObj[lab.floor]){
+              floorObj[lab.floor] = true;
+            }
+            lab.dt = new Date();
+            var year = lab.dt.getFullYear(),
+                month = lab.dt.getMonth()+ 1,
+                day = lab.dt.getDate(),
+                date = year + '-' + month + '-' + day;
+            // 从 labsInfo 中过滤掉已经预订的时段
+            $scope.labsInfo.forEach(function(labInfo, i){
+              if(labInfo.lab._id === lab._id){
+                periods = periods.filter(function(period){
+                  if(new Date(labInfo.start_time).getTime() === new Date(date+' '+period.startTime).getTime()){
+                    return false;
+                  }
+                  return true;
+                });
+              }
+            });
+
+            lab.opened = false;
+            lab.reserveInterval = 1;
+            lab.reserveTimes = 1;
+            lab.periods = periods;
+            lab.selectedPeriod = lab.periods[0];
+          });
         });
+
+        // pagination
+        $scope.totalLabs = labs.length;
+
+        $scope.labsCurrentPage = 1;
+        $scope.labsPerPage = 10;
+
+        $scope.pageChanged = function() {
+          var startIndex = ($scope.labsCurrentPage-1)*10;
+          var endIndex = startIndex + $scope.labsPerPage;
+
+          $scope.currentLabs = $scope.labs.slice(startIndex, endIndex);
+        };
+        $scope.pageChanged();
+
         // 获取 departments 和 floors
         $scope.departments = Object.keys(departmentObj);
         $scope.floors = Object.keys(floorObj);
-
       });
     }
 
@@ -112,8 +170,7 @@ angular.module('labs')
 
       var startTime =  new Date(date + ' ' + lab.selectedPeriod.startTime).getTime();
       var endTime = new Date(date + ' ' + lab.selectedPeriod.endTime).getTime();
-      console.log(lab.reserveInterval);
-      console.log(lab.reserveTimes);
+
       if(lab.reserveTimes && lab.reserveInterval){
         var intervalMillisecond = lab.reserveInterval*24*60*60*1000;
 
@@ -171,20 +228,38 @@ angular.module('labs')
     };
   }
 ])
-.controller('PrivateLabController', ['$scope', 'LabsInfo', 'Authentication', '$stateParams',
+.controller('LabsInfoController', ['$scope', 'LabsInfo', 'Authentication', '$stateParams',
   function($scope, LabsInfo, Authentication, $stateParams){
-    var authentication = Authentication;
-    console.log($stateParams);
-    LabsInfo.query($stateParams).$promise.then(function(labsInfo){
-      $scope.labsInfo = labsInfo;
-    }, function(){
+    $scope.authentication = Authentication;
 
+    $scope.isBackPage = !$stateParams.private;
+    // $scope.$watch("$stateParams", )
+    LabsInfo.query($stateParams).$promise.then(function(labsInfo){
+      var now = new Date().getTime();
+      $scope.labsInfo = labsInfo.filter(function(labInfo){
+        if(new Date(labInfo.end_time).getTime() > now){
+          return true;
+        }
+        return false;
+      });
+      $scope.totalLabsInfo = $scope.labsInfo.length;
+
+      $scope.labsInfoCurrentPage = 1;
+      $scope.labsInfoPerPage = 10;
+
+      $scope.pageChanged = function() {
+        var startIndex = ($scope.labsInfoCurrentPage-1)*10;
+        var endIndex = startIndex + $scope.labsInfoPerPage;
+
+        $scope.currentLabsInfo = $scope.labsInfo.slice(startIndex, endIndex);
+      };
+      $scope.pageChanged();
     });
 
     $scope.remove = function(index){
       var labInfo = $scope.labsInfo.splice(index, 1)[0];
       labInfo.lab = labInfo.lab._id;
-      console.log(labInfo);
+
       labInfo.$remove();
     };
   }

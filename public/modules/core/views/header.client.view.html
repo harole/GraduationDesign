@@ -55,14 +55,29 @@
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-      <li ui-route="/lab/center" ng-class="{active: $uiRoute}">
+      <li ui-route="/labs" ng-class="{active: $uiRoute}">
         <a href="/#!/labs">Lab List</a>
       </li>
     </ul>
     <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-      <li ui-route="/labs/info?private=1" ng-class="{active: $uiRoute}">
+      <li ui-route="/labs/info" ng-class="{active: $uiRoute}">
         <a href="/#!/labs/info?private=1">My Labs</a>
       </li>
     </ul>
+    <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+      <li ui-route="/back/labs" ng-class="{active: $uiRoute}">
+        <a href="/#!/back/labs">Back Manage</a>
+      </li>
+    </ul>
+    <!-- <ul class="nav navbar-nav navbar-right" data-ng-show="isManager || isAdmin">
+      <li ui-route="/labs/info" ng-class="{active: $uiRoute}">
+        <a href="/#!/labs/info">Labs Manage</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" data-ng-show="isAdmin">
+      <li ui-route="/auth/users" ng-class="{active: $uiRoute}">
+        <a href="/#!/auth/users">Users List</a>
+      </li>
+    </ul> -->
   </nav>
 </div>

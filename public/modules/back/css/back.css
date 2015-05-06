@@ -1,0 +1,142 @@
+#sidebar {
+  color: white;
+}
+#sidebar ul,
+#sidebar li {
+  padding: 0;
+  margin: 0;
+}
+#sidebar li {
+  list-style: none;
+}
+#sidebar a {
+  color: white;
+}
+/* line 23, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar a:hover {
+  text-decoration: none;
+}
+
+#sidebar {
+  border-right: 1px solid #c1c1c1;
+  width: 190px;
+  min-height: 600px;
+  float: left;
+  background-color: #eaeaea;
+}
+/* line 101, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item {
+  display: block;
+  height: 55px;
+  line-height: 55px;
+  background-color: #eaeaea;
+  color: #000;
+  border-bottom: 1px solid #c1c1c1;
+  padding-left: 22px;
+  font-size: 16px;
+  position: relative;
+}
+/* line 113, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item .icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 28px;
+  top: 14px;
+  background-image: url(img/icons.png);
+}
+/* line 120, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item .icon.icon-machine {
+  background-position: -1px -5px;
+}
+/* line 123, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item .icon.icon-balancing {
+  background-position: -38px -5px;
+}
+/* line 126, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item .icon.icon-struct {
+  background-position: -75px -5px;
+}
+/* line 129, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item .icon.icon-filestore {
+  background-position: -119px -5px;
+}
+/* line 134, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item:hover, #sidebar .opened .item {
+  background-color: #eef1f8;
+  color: #f72;
+  cursor: pointer;
+}
+#sidebar .active .item{
+  background-color: #eef1f8;
+  color: #f72;
+}
+/* line 138, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item:hover .icon-machine, #sidebar .opened .item .icon-machine {
+  background-position: -1px -37px;
+}
+/* line 141, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item:hover .icon-balancing, #sidebar .opened .item .icon-balancing {
+  background-position: -38px -41px;
+}
+/* line 144, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item:hover .icon-struct, #sidebar .opened .item .icon-struct {
+  background-position: -75px -40px;
+}
+/* line 147, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .item:hover .icon-filestore, #sidebar .opened .item .icon-filestore {
+  background-position: -119px -43px;
+}
+/* line 152, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .sub-item {
+  display: block;
+  height: 0;
+  line-height: 54px;
+  background-color: #E6E6E6;
+  color: #000;
+  padding-left: 60px;
+  overflow: hidden;
+  font-size: 14px;
+  -webkit-transition: height linear;
+  -webkit-transition-delay: 0.2s;
+  -moz-transition: height linear 0.2s;
+  -o-transition: height linear 0.2s;
+  transition: height linear 0.2s;
+}
+/* line 164, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .sub-item:hover, #sidebar .sub-item.selected {
+  background-color: #e6e6e6;
+  color: #f72;
+}
+/* line 170, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .opened .item {
+  border-bottom: none;
+}
+/* line 172, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+/*#sidebar .opened .item:after {
+  content: "v";
+  position: absolute;
+  right: 15px;
+  color: #ccc;
+}*/
+/* line 179, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .opened .item:hover, #sidebar .opened .item {
+  cursor: default;
+}
+/* line 183, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .opened .sub-item {
+  height: 54px;
+}
+/* line 186, F:/workspace/xiaomi/dev-platform-console-fe/app/common/_meta.scss */
+#sidebar .opened .sub-item-list {
+  border-bottom: 1px solid #c1c1c1;
+}
+
+#backMgt {
+  background-color: #eaeaea;
+}
+.backMain {
+  width: 950px;
+  padding-left: 15px;
+  background: #fff;
+}

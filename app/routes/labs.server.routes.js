@@ -8,6 +8,7 @@ var users = require('../../app/controllers/users.server.controller'),
 
 module.exports = function(app) {
   app.route('/labs')
+    .post(users.requiresLogin, labs.create)
     .get(labs.list);
 
   // app.route('/labs/private/:labId')
@@ -15,7 +16,8 @@ module.exports = function(app) {
 
   app.route('/labs/:labId')
     .get(labs.read)
-    .put(users.requiresLogin, labs.update);
+    .put(users.requiresLogin, labs.update)
+    .delete(users.requiresLogin, labs.delete);
 
   app.param('labId', labs.labByID);
 };

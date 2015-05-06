@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
   errorHandler = require('./errors.server.controller'),
   LabsInfo = mongoose.model('LabsInfo'),
   Lab = mongoose.model('Lab'),
+  User = mongoose.model('User'),
   _ = require('lodash');
 
 exports.create = function(req, res){
@@ -46,8 +47,8 @@ exports.list = function(req, res){
   var queryParams = req.query;
 
   // ownerId 查询参数处理
-  if(req.query.private){
-    console.log(req.user.id);
+  if(queryParams.private === '1'){
+    // 个人预订
     LabsInfo.find({user: req.user.id}).lean().exec(function(err, labsInfo){
       if(err){
         return res.status(400).send({
@@ -61,24 +62,54 @@ exports.list = function(req, res){
         _.each(labsInfo, function(labInfo){
           Lab.findById(labInfo.lab).exec(function(err, lab){
             labInfo.lab = lab;
-            if(++counter === len){
-              res.send(labsInfo);
-            }
+            User.findById(labInfo.user).exec(function(err, user){
+              labInfo.user = user;
+              if(++counter === len){
+                res.send(labsInfo);
+              }
+            });
           });
         });
       }
     });
-    // return false;
   }
-  else{
-    console.log('queryParams');
-    LabsInfo.find(queryParams).sort({'department': 1, 'floor': 1}).exec(function(err, labs){
+  else if(queryParams.lab){
+    LabsInfo.find(queryParams).sort({'start_time': 1}).lean().exec(function(err, labsInfo){
       if (err) {
         return res.status(400).send({
           message: errorHandler.getErrorMessage(err)
         });
       } else {
-        res.json(labs);
+        res.json(labsInfo);
+      }
+    });
+  }
+  else{
+    LabsInfo.find(queryParams).sort({'start_time': 1}).lean().exec(function(err, labsInfo){
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        var len = labsInfo.length,
+          counter = 0;
+
+        _.each(labsInfo, function(labInfo){
+          Lab.findById(labInfo.lab).exec(function(err, lab){
+            labInfo.lab = lab;
+            User.findById(labInfo.user).exec(function(err, user){
+              labInfo.user = user;
+              if(++counter === len){
+                res.send(labsInfo);
+              }
+            });
+            // labInfo.lab = lab;
+            // if(++counter === len){
+            //   res.send(labsInfo);
+            // }
+          });
+        });
+        // res.json(labs);
       }
     });
   }

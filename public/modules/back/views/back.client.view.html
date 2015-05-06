@@ -1,0 +1,27 @@
+
+<section data-ng-controller="BackManageController" class="clearfix" id="backMgt">
+  <nav id="sidebar">
+    <ul>
+      <li ui-route="/back/labs" ng-class="{active: $uiRoute}">
+        <a ui-sref=".labs" href="/#!/back/labs" class="item">
+          <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+          Labs Manage
+        </a>
+      </li>
+      <li ui-route="/back/users" ng-class="{active: $uiRoute}">
+        <a ui-sref=".users" href="/#!/back/users" class="item">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+          Users Manage
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="backMain pull-left">
+    <!-- <div class="row">
+      <div class="span12"> -->
+        <div ui-view></div>
+        <!-- <div class="well" ui-view="back.users"></div> -->
+      <!-- </div>
+    </div -->
+  </div>
+</section>

@@ -1,11 +1,22 @@
 'use strict';
 
 //Labs service used for communicating with the articles REST endpoints
-angular.module('labs')
+angular.module('back')
 .factory('Labs', ['$resource',
   function($resource) {
-    return $resource('labs/:labId', {
+    return $resource('back/labs/:labId', {
       labId: '@_id'
+    }, {
+      update: {
+        method: 'PUT'
+      }
+    });
+  }
+])
+.factory('Users', ['$resource',
+  function($resource) {
+    return $resource('back/users/:userId', {
+      userId: '@_id'
     }, {
       update: {
         method: 'PUT'
@@ -24,14 +35,3 @@ angular.module('labs')
     });
   }
 ]);
-// .factory('PrivateLabs', ['$resource',
-//   function($resource){
-//     return $resource('labs/info', {
-//       private: 1
-//     }, {
-//       update: {
-//         method: 'PUT'
-//       }
-//     });
-//   }
-// ]);

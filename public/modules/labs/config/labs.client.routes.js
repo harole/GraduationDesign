@@ -9,9 +9,17 @@ angular.module('labs').config(['$stateProvider',
         url: '/labs',
         templateUrl: 'modules/labs/views/labs.client.view.html'
     })
-    .state('privateLab', {
-        url: '/labs/info?private=1',
-        templateUrl: 'modules/labs/views/private-labs.client.view.html'
+    // .state('allLabsInfo', {
+    //     url: '/labs/info',
+    //     templateUrl: 'modules/labs/views/labs-info.client.view.html'
+    // })
+    .state('labsInfo', {
+        url: '/labs/info?private',
+        templateUrl: 'modules/labs/views/labs-info.client.view.html'
+    })
+    .state('labsManage', {
+        url: '/labs/management',
+        templateUrl: 'modules/labs/views/labs-management.client.view.html'
     });
     // state('listArticles', {
     //   url: '/articles',

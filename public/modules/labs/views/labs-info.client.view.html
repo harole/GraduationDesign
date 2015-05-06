@@ -1,0 +1,48 @@
+<section ng-controller="LabsInfoController">
+  <div class="page-header">
+    <h1 ng-show="isBackPage">Labs Info</h1>
+    <h1 ng-show="!isBackPage">My Labs</h1>
+  </div>
+  <div class="col-md-12">
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <!-- <th>Num</th> -->
+        <th>Department</th>
+        <th>Floor</th>
+        <th>Lab Name</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>User</th>
+        <th>Operation</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="labInfo in currentLabsInfo">
+          <!-- <td><span ng-bind="$index"></span></td> -->
+          <td>
+            <span ng-bind="labInfo.lab.department"></span>
+          </td>
+          <td>
+            <span ng-bind="labInfo.lab.floor"></span>
+          </td>
+          <td>
+            <span ng-bind="labInfo.lab.lab_name"></span>
+          </td>
+          <td><span ng-bind="labInfo.start_time | date: 'yyyy-MM-dd'"></span></td>
+          <td>
+            <span ng-bind="labInfo.start_time | date: 'HH:mm'"></span>
+            ~
+            <span ng-bind="labInfo.end_time | date: 'HH:mm'"></span>
+          </td>
+          <td ng-bind="labInfo.user.displayName"></td>
+          <td>
+            <button class="btn btn-danger"
+              ng-click="remove($index)">Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <pagination boundary-links="true" total-items="totalLabsInfo" ng-model="labsInfoCurrentPage" ng-change="pageChanged()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" max-size="5" items-per-page="labsInfoPerPage"></pagination>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,143 @@
+<!-- build:template
+<%
+  /**
+   * 使用绝对路径，而不是相对路径
+   */
+  var BASE_PATH = '/console/';
+  /**
+   * 与angular模块`structStore`的常量`MODULE_BASE_ROUTE`的值相同，
+   * 这么做是因为也没有更好的办法，后续看能不能通过grunt-processhtml统一填这个值
+   */
+  var STRUCT_STORE_MOUDULE_BASE_ROUTE = '';
+  /**
+   * sidebar的数据：
+   * 之所以把sidebar的数据内联在.tmpl文件中，而不是抽离到一个独立的.js文件中，
+   * 是为了在grunt watch时，修改sidebar的数据后即可立即使用新的数据进行编译，
+   * 而不需要重启grunt watch
+   */
+  var sidebar = {
+    items: [
+      {
+        'val': 'cloudMachine',
+        'wording': '云主机',
+        'icon': 'machine',
+        'subItems': [
+          {
+            'val':'machine',
+            'wording':'主机',
+            'url':'http://dev.xiaomi.com/console/kvm/'
+          },
+          {
+            'val':'data-drive',
+            'wording':'数据盘',
+            'url': 'http://dev.xiaomi.com/console/kvm/ebs'
+          },
+          {
+            'val':'backup',
+            'wording':'备份',
+            'url':'http://dev.xiaomi.com/console/kvm/snapshot'
+          },
+          {
+            'val':'firewall',
+            'wording':'防火墙',
+            'url':'http://dev.xiaomi.com/console/kvm/firewall'
+          }
+        ]
+      },
+      /*{
+        'val':'load-balancing',
+        'wording':'负载均衡',
+        'icon': 'balancing',
+        'subItems':[
+          {
+            'val':'load-balancing2',
+            'wording':'负载均衡',
+            'url':'http://dev.xiaomi.com/console/lbs/'
+          }
+        ]
+      },*/
+      {
+        'val': 'structStore',
+        'wording': '结构化存储',
+        'icon': 'struct',
+        'subItems': [
+          {
+            'val': 'structStoreTable',
+            'wording': '表管理',
+            'url': BASE_PATH + 'struct-store/#/' + STRUCT_STORE_MOUDULE_BASE_ROUTE + 'table/'
+          }, {
+            'val': 'structStoreData',
+            'wording': '数据操作',
+            'url': BASE_PATH + 'struct-store/#/' + STRUCT_STORE_MOUDULE_BASE_ROUTE + 'data/'
+          }
+        ]
+      },
+      {
+        'val': 'fileStore',
+        'wording': '文件存储',
+        'icon': 'filestore',
+        'subItems': [
+          {
+            'val': 'fileStoreData',
+            'wording': '数据管理',
+            'url': BASE_PATH + 'file-store/'
+          }
+        ]
+      }
+      /**
+       * 暂时隐藏智能家居的入口，等做得比较稳定了再放
+       */
+      
+      /*{
+        'val': 'intelligentHome',
+        'wording': '智能家居',
+        'subItems': [
+          {
+            'val': 'intelligentHomeIntro',
+            'wording': '概况说明',
+            'url': BASE_PATH + 'intelligent-home/index.html#/intro'
+          },
+          {
+            'val': 'intelligentHomeProtocol',
+            'wording': '协议演示',
+            'url': BASE_PATH + 'intelligent-home/index.html#/protocol'
+          },
+          {
+            'val': 'intelligentHomeBoard',
+            'wording': '申请开发板',
+            'url': BASE_PATH + 'intelligent-home/index.html#/ask'
+          },
+          {
+            'val': 'intelligentHomeRelative',
+            'wording': '相关文档',
+            'url': BASE_PATH + 'intelligent-home/index.html#/doc'
+          }
+        ]
+      }*/
+    ]
+  };
+%>
+<nav id="sidebar" ng-controller="sidebarCtrl">
+  <ul>
+      <% sidebar.items.forEach(function(item){ %>
+        <li ng-class="openedItem === '<%- item.val %>' ? 'opened' : ''">
+          <span class="item" ng-click="openedItem = '<%- item.val %>'">
+            <span class="icon icon-<%- item.icon %>"></span>
+            <%- item.wording %>
+          </span>
+          <ul class="sub-item-list">
+            <% item.subItems.forEach(function(subItem){ %>
+              <li>
+                <a class="sub-item"
+                  ng-class="selectedSubItem === '<%- subItem.val %>' ? 'selected' : ''"
+                  href="<%- subItem.url %>"
+                  ng-click="selectedSubItem = '<%- subItem.val %>'"
+                  ><%- subItem.wording %></a>
+              </li>
+            <% }); %>
+          </ul>
+        </li>
+      <% }); %>
+  </ul>
+</nav>
+/build -->

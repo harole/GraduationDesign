@@ -8,10 +8,24 @@ var mongoose = require('mongoose'),
   Lab = mongoose.model('Lab'),
   _ = require('lodash');
 
+exports.create = function(req, res){
+  var lab = new Lab(req.body);
+  console.log(lab);
+  lab.save(function(err) {
+    if (err) {
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    } else {
+      res.json(lab);
+    }
+  });
+};
+
 exports.list = function(req, res){
   var queryParams = req.query;
 
-  Lab.find(queryParams).sort({'department': 1, 'floor': 1}).exec(function(err, labs){
+  Lab.find(queryParams).sort({'department': 1, 'floor': 1, 'lab_name': 1}).exec(function(err, labs){
     if (err) {
       return res.status(400).send({
         message: errorHandler.getErrorMessage(err)
@@ -35,6 +49,21 @@ exports.update = function(req, res){
         message: errorHandler.getErrorMessage(err)
       });
     } else {
+      res.json(lab);
+    }
+  });
+};
+
+exports.delete = function(req, res){
+  var lab = req.lab;
+
+  lab.remove(function(err){
+    if(err){
+      return res.status(400).send({
+        message: errorHandler.getErrorMessage(err)
+      });
+    }
+    else{
       res.json(lab);
     }
   });
