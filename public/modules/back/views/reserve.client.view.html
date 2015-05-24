@@ -1,0 +1,64 @@
+<section ng-controller="IntelligentReserveController">
+  <div class="page-header">
+    <h1>Reserve</h1>
+  </div>
+  <div class="col-md-12">
+    <div>
+      <form class="form" name="form" ng-submit="submit()">
+        <!-- <input type="file" name="excel" id="reserveFile"  /> -->
+        <div class="form-group">
+          <!-- <file name="excel" ng-model="newExcel"  /> -->
+          <input type="file" name="excel" files-model="newExcel.excel" />
+          <!-- <input type="submit" value="submit"> -->
+        </div>
+
+        <button type="submit" class="btn btn-primary">Preview</button>
+      </form>
+    </div>
+    <!-- <div ng-flow-init="{target: '/upload'}"> -->
+      <!-- <form action="">
+        <input type="file" ng-model="list" name="list">
+      </form>
+      <button class="btn btn-primary" ng-click="importList()">Import List</button> -->
+      <!-- <input type="file" ng-flow-btn /> -->
+      <!-- <input type="file" flow-btn flow-directory />
+        Input OR Other element as upload button -->
+      <!-- <span flow-btn>Upload File</span> -->
+      <!-- <button class="btn btn-primary" ng-flow-btn>Import List</button> -->
+    <!-- </div> -->
+    <!-- <div flow-init="{target: '/upload'}"
+         flow-files-submitted="$flow.upload()"
+         flow-file-success="$file.msg = $message">
+      <input type="file" flow-btn/>
+      Input OR Other element as upload button
+      <span class="btn" flow-btn>Upload File</span>
+      <button class="btn btn-primary" flow-btn>Import List</button>
+      <table>
+        <tr ng-repeat="file in $flow.files">
+            <td>{{$index+1}}</td>
+            <td>{{file.name}}</td>
+            <td>{{file.msg}}</td>
+        </tr>
+      </table>
+    </div> -->
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <th>Username</th>
+        <th>Start Date</th>
+        <th>Weeks</th>
+        <th>Persons</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="row in excelList track by $index">
+          <td ng-repeat="item in row"><span ng-bind="item"></span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <pagination boundary-links="true" total-items="totalLabs" ng-model="labsCurrentPage" ng-change="pageChanged()" class="pagination-sm" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" max-size="5" items-per-page="labsPerPage"></pagination>
+    </div>
+  </div>
+  <section>
+    <div ng-include="labsInfoUrl"></div>
+  </section>
+</section>

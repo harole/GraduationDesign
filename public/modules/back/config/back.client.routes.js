@@ -1,7 +1,7 @@
 'use strict';
 
 // Setting up route
-angular.module('back').config(['$stateProvider',
+angular.module('back', ['flow']).config(['$stateProvider',
   function($stateProvider) {
     // Articles state routing
     $stateProvider
@@ -16,6 +16,10 @@ angular.module('back').config(['$stateProvider',
     .state('back.users', {
       url: '/users',
       templateUrl: 'modules/back/views/users.client.view.html'
+    })
+    .state('back.reserve', {
+      url: '/reserve',
+      templateUrl: 'modules/back/views/reserve.client.view.html'
     });
   }
 ]);

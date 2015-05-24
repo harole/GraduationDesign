@@ -5,12 +5,12 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
     $scope.authentication = Authentication;
     $scope.isCollapsed = false;
     $scope.menu = Menus.getMenu('topbar');
-
-    $scope.authentication.user.roles.forEach(function(role){
-      if(role === 'admin') $scope.isAdmin = true;
-      if(role === 'manager') $scope.isManager = true;
-    });
-
+    if($scope.authentication.user){
+      $scope.authentication.user.roles.forEach(function(role){
+        if(role === 'admin') $scope.isAdmin = true;
+        if(role === 'manager') $scope.isManager = true;
+      });
+    }
     $scope.toggleCollapsibleMenu = function() {
       $scope.isCollapsed = !$scope.isCollapsed;
     };

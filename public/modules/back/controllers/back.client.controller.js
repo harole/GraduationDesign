@@ -65,7 +65,6 @@ angular.module('back')
       $scope.users = users;
       $scope.users.forEach(function(user, index){
         user.primaryIndex = index;
-        console.log(user);
       });
     });
     $scope.setManager = function(index){
@@ -79,8 +78,6 @@ angular.module('back')
     };
     $scope.removeManager = function(index){
       var user = $scope.users[index];
-      console.log(index);
-      console.log($scope.users);
       user.roles.forEach(function(role, index){
         if(role === 'manager'){
           user.roles.splice(index, 1);
@@ -92,6 +89,40 @@ angular.module('back')
         user.primaryIndex = index;
       });
     };
+  }
+])
+.controller('IntelligentReserveController', ['$scope', 'UploadExcel',
+  function($scope, UploadExcel){
+
+    $scope.newExcel = {};
+    $scope.uploadExcel = function(){
+      console.log('ji');
+      // var reserveForm = document.getElementById('reserveForm');
+      // var formData = new FormData(reserveForm);
+      // formData.append('file', document.getElementById('reserveFile'));
+      // console.log(formData);
+    };
+    // $scope.$watch(function(){
+    //   return $scope.newExcel;
+    // }, function(newVal, oldVal){
+    //   if(newVal.name && newVal.name !== oldVal.name){
+    //     UploadExcel.save($scope.newExcel, function(){
+    //     });
+    //   }
+    // });
+    $scope.submit = function(){
+      UploadExcel.save($scope.newExcel, function(result){
+        // if (result.status != 'OK') throw result.status;
+
+        // $scope.images.push(result.data);
+        // console.log(result);
+        $scope.excelList = result;
+      });
+    };
+    // $scope.importList = function(){
+    //   console.log($scope.list);
+    // };
+    // $scope.$flow = new Flow();
   }
 ])
 .filter('userRoles', [
